@@ -92,6 +92,9 @@
     "link-preview-js": "^3.0.0",
     "sharp": "*"
   },
+	"publishConfig": {
+    "access": "public"
+	},
   "peerDependenciesMeta": {
     "audio-decode": {
       "optional": true
